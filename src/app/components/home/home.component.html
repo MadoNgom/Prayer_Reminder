@@ -1,0 +1,9 @@
+<p>home works!</p>
+<h2>Prayers</h2>
+<ul>
+  <li *ngFor="let prayer of prayers">
+    <span>{{ prayer.name }}</span>
+    <span>{{ prayer.completeAt }}</span>
+    <span>{{ prayer.isComplete ? "Complete" : "Incomplete" }}</span>
+  </li>
+</ul>
