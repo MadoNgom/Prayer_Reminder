@@ -1,0 +1,61 @@
+<!-- HEADER -->
+<header class="header">
+  <div class="header-content">
+    <h1>Wakhtou Djouli</h1>
+    <h2>{{ currentTime }}</h2>
+    <p>Timis dans moins de 02:23</p>
+  </div>
+  <div class="date">
+    <h4>10 Mai , 2024</h4>
+    <p>10 Rabi'Tul awal, 1446H</p>
+  </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+  <div class="flex">
+    <h5>Prayer</h5>
+    <h5>Time</h5>
+    <button type="button" class="add-btn" (click)="toggleForm()">
+      Add Prayer
+    </button>
+  </div>
+  <div class="line"></div>
+  <!-- Input form -->
+  <div *ngIf="showForm || isEditing" class="input-form">
+    <input
+      type="text"
+      [(ngModel)]="name"
+      placeholder="Prayer Name"
+      class="input-item"
+    />
+    <input
+      type="text"
+      [(ngModel)]="completeAt"
+      placeholder="Prayer Time"
+      class="input-item"
+    />
+    <button
+      type="button"
+      class="add-btn"
+      (click)="saveChanges()"
+      [style.background-color]="isEditing ? 'green' : 'black'"
+    >
+      {{ isEditing ? "Save" : "Add" }}
+    </button>
+  </div>
+  <div class="reminder flex" *ngFor="let item of prayers">
+    <h4>
+      <input type="radio" name="selectedPrayer" (change)="waitToDelete(item)" />
+      {{ item.name }}
+    </h4>
+    <p>{{ item.completeAt }}</p>
+    <button
+      type="button"
+      class="btn btn-change"
+      (click)="toggleEditForm(item)"
+      style="cursor: pointer"
+    >
+      Change
+    </button>
+  </div>
+</div>
