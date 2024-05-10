@@ -1,5 +1,5 @@
-export interface PrayerInterf {
-  id?: number;
+export interface Prayer {
+  id: number;
   name: string;
   completeAt: string;
   isComplete: boolean;
