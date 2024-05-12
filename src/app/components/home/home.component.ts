@@ -9,11 +9,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   prayers: any[] = [];
-  isLoading: boolean = false;
+
   currentTime: string | undefined;
   showForm: boolean = false;
   isEditing: boolean = false;
   editedItemId: number | null = null;
+  // TO ADD PRAYER
+  name: string = '';
+  completeAt: string = '';
+  isComplete: boolean = false;
+  prayerId: number = 0;
   // USE HTTP CLIENT MODULE
   constructor(private http: HttpClient) {}
   //LOAD DATA WHEN THE PAGE LOAD
@@ -21,13 +26,13 @@ export class HomeComponent implements OnInit {
     this.getAll();
     this.getCurrentTime();
   }
+  // TO GET ALL PRAYER FROM THE SERVER
   getAll() {
     this.http
       .get('http://localhost:5000/api/prayer')
       .subscribe((result: any) => {
-        this.isLoading = true;
-        console.log(result.data);
         this.prayers = result.data;
+        console.log(result.data);
       });
   }
   // TO GET THE TIME
@@ -39,29 +44,6 @@ export class HomeComponent implements OnInit {
   }
   padZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
-  }
-
-  // TO ADD PRAYER
-  name: string = '';
-  completeAt: string = '';
-  isComplete: boolean = false;
-  prayerId: number = 0;
-  addItem() {
-    let itemData = {
-      name: this.name,
-      completeAt: this.completeAt,
-      isComplete: this.isComplete,
-    };
-
-    this.http
-      .post('http://localhost:5000/api/prayer/add', itemData)
-      .subscribe((result: any) => {
-        console.log(result);
-        this.prayers.push(result.data);
-        // Reset input fields after adding the item
-        this.name = '';
-        this.completeAt = '';
-      });
   }
   // TO DELETE AN ITEM
   waitToDelete(item: any) {
@@ -78,6 +60,33 @@ export class HomeComponent implements OnInit {
         console.log(result);
         // Remove the deleted item from the prayers array
         this.prayers = this.prayers.filter((prayer) => prayer.id !== item.id);
+      });
+  }
+  // HANDLE BUTTON CLICKED FUNCTION ACTION TO DO EITHER ADDING OR EDITING
+  handleButtonClick() {
+    if (this.isEditing) {
+      this.saveChanges();
+    } else {
+      this.addItem();
+    }
+  }
+
+  // FUNCTION TO ADD
+  addItem() {
+    let itemData = {
+      name: this.name,
+      completeAt: this.completeAt,
+      isComplete: this.isComplete,
+    };
+    console.log('Prayer added');
+    this.http
+      .post('http://localhost:5000/api/prayer/add', itemData)
+      .subscribe((result: any) => {
+        console.log(result);
+        this.prayers.push(result.data);
+        // Reset input fields after adding the item
+        this.name = '';
+        this.completeAt = '';
       });
   }
 

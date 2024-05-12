@@ -7,10 +7,11 @@ import { Prayer } from '../model/prayer-interf';
   providedIn: 'root',
 })
 export class ReminderService {
+  // APPLICATION IN PROGRESS
   private apiUrl = 'http://localhost:5000/api/prayer';
 
   constructor(private http: HttpClient) {}
-  getAllPrayers(): Observable<{ status: number; data: Prayer[] }> {
+  getAll(): Observable<{ status: number; data: Prayer[] }> {
     return this.http.get<{ status: number; data: Prayer[] }>(`${this.apiUrl}`);
   }
 }

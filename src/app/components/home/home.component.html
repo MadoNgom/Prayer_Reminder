@@ -37,12 +37,13 @@
     <button
       type="button"
       class="add-btn"
-      (click)="saveChanges()"
+      (click)="handleButtonClick()"
       [style.background-color]="isEditing ? 'green' : 'black'"
     >
       {{ isEditing ? "Save" : "Add" }}
     </button>
   </div>
+  <!-- LIST OF THE ITEMS -->
   <div class="reminder flex" *ngFor="let item of prayers">
     <h4>
       <input type="radio" name="selectedPrayer" (change)="waitToDelete(item)" />
