@@ -30,31 +30,33 @@ Prayer Reminder est une application de suivi des 5 prières quotidiennes, pratiq
 
 ### Clonage du Repository
 
-La première étape consiste à cloner le repository sur votre machine locale en utilisant la commande suivante :
+1. La première étape consiste à cloner le repository sur votre machine locale en utilisant la commande suivante :
 
-```bash
-git clone https://github.com/MadoNgom/Prayer_Reminder
+`git clone https://github.com/MadoNgom/Prayer_Reminder`
 
-Pour accéder au répertoire "prayerApi" dans le projet "Prayer_ReminderApp", vous pouvez utiliser la commande suivante :
+2.  Changez votre répertoire courant pour le répertoire "prayerApi" dans le projet "Prayer_ReminderApp" en utilisant la commande suivante
 
-`cd Prayer_ReminderApp/prayerApi`
+`cd Prayer_ReminderApp/prayerApi` 3. Importer et démarrer votre serveur de base de données: Vous pouvez importer le fichier de base de données "dbprayer" dans votre environnement de serveur local préféré tel que Lamp, XAMPP ou WAMP. Assurez-vous de démarrer le serveur.
 
-Après le lancement du serveur, l'API sera accessible à l'adresse suivante :
-* Vous pouvez  importer dbprayer sur Lamp , xamp ou Wamp et allumer le serveur
-* Lancez le serveur de développement de l API en utilisant la commande suivante :
-`npm run dev`
-* Après le lancement du serveur, l'API sera accessible à l'adresse suivante :
-`http://localhost:5000/api/prayer`
-* vous pouvez tester cette api sur postman
-* Pour Ajouter un record  on utilise
-`http://localhost:5000/api/prayer/add`
-* Pour supprimer un record on utilise
-`http://localhost:5000/api/prayer/delete/id`
-Pour Editer un Record on utilise
-`http://localhost:5000/api/prayer/edit/id`
-```
+4. Lancez le serveur de développement de l API en utilisant la commande suivante :
 
-# Utilisation du Projet
+   ```bash
+   ` npm run dev `
+   ```
+
+5. Après le lancement du serveur, l'API sera accessible à l'adresse suivante :
+   `http://localhost:5000/api/prayer`
+
+- vous pouvez tester cette api sur postman
+
+6.  Pour Ajouter un record on utilise
+    `http://localhost:5000/api/prayer/add`
+7.  Pour supprimer un record on utilise
+    `http://localhost:5000/api/prayer/delete/id`
+8.  Pour Editer un Record on utilise
+    `http://localhost:5000/api/prayer/edit/id`
+
+# Utilisation Partie Front end du Projet
 
 Après avoir lancé le serveur de développement de l'API, vous pouvez accéder au projet et lancer le serveur frontend pour voir le site en ligne. Voici les étapes à suivre :
 
